@@ -1,7 +1,7 @@
 function App() {
   return (
     <div>
-      <h1>App Name</h1>
+      <h1>React Pizza Menu</h1>
     </div>
   );
 }
