@@ -2,7 +2,7 @@
 
 ### Description
 
--
+- Learning the basics of COmponents in React
 
 ### Vite automatic starter files
 
