@@ -1,13 +1,20 @@
+// -----------------------------------------------------------------------------
+// Import React and ReactDOM
+// -----------------------------------------------------------------------------
+
 import React from "react";
 import ReactDOM from "react-dom/client";
+
+// -----------------------------------------------------------------------------
+// Functional Components
+// -----------------------------------------------------------------------------
 
 function App() {
   return (
     <div>
-      <h1>React Pizza Menu</h1>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Header />
+      <Menu />
+      <Footer />
     </div>
   );
 }
@@ -16,11 +23,40 @@ function Pizza() {
   return (
     <div>
       <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
-      <h2>🍕 Pizza Spinaci</h2>
+      <h3>🍕 Pizza Spinaci</h3>
       <p>Tomato, mozarella, spinach, and ricotta cheese</p>
     </div>
   );
 }
+
+function Header() {
+  return <h1>Fast React Pizza Co.</h1>;
+}
+
+function Menu() {
+  return (
+    <main>
+      <h2>Our Menu</h2>
+      <Pizza />
+      <Pizza />
+      <Pizza />
+      <Pizza />
+    </main>
+  );
+}
+
+function Footer() {
+  const hour = new Date().getHours();
+  const isOpen = hour >= 9 && hour < 21;
+
+  return (
+    <footer>{new Date().toLocaleDateString()} Fast React Pizza Co.</footer>
+  );
+}
+
+// -----------------------------------------------------------------------------
+// Data
+// -----------------------------------------------------------------------------
 
 const pizzaData = [
   {
@@ -66,6 +102,10 @@ const pizzaData = [
     soldOut: false,
   },
 ];
+
+// -----------------------------------------------------------------------------
+// Render
+// -----------------------------------------------------------------------------
 
 // React 18
 const root = ReactDOM.createRoot(document.getElementById("root"));
