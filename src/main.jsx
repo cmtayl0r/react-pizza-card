@@ -20,16 +20,6 @@ function App() {
   );
 }
 
-function Pizza() {
-  return (
-    <div className="pizza">
-      <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
-      <h3>🍕 Pizza Spinaci</h3>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
-    </div>
-  );
-}
-
 function Header() {
   return (
     <header className="header">
@@ -42,13 +32,30 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      {pizzaData.map((pizza, index) => (
+        <Pizza
+          key={index}
+          name={pizza.name}
+          ingredients={pizza.ingredients}
+          price={pizza.price}
+          photoName={pizza.photoName}
+          soldOut={pizza.soldOut}
+        ></Pizza>
+      ))}
     </main>
+  );
+}
+
+function Pizza({ name, ingredients, price, photoName, soldOut }) {
+  return (
+    <div className="pizza">
+      <img src={photoName} alt="{name}" />
+      <h3>{name}</h3>
+      <p>{ingredients}</p>
+      <span className="pizza__price" aria-live="polite">
+        {soldOut ? "Sold Out" : `$${price.toFixed(2)}`}
+      </span>
+    </div>
   );
 }
 
