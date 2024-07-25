@@ -108,6 +108,7 @@ const pizzaData = [
 // -----------------------------------------------------------------------------
 
 // React 18
+// we use root because we are using the new root API to render the app
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
