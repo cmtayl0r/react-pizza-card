@@ -32,30 +32,25 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      {pizzaData.map((pizza, index) => (
-        <Pizza
-          key={index}
-          name={pizza.name}
-          ingredients={pizza.ingredients}
-          price={pizza.price}
-          photoName={pizza.photoName}
-          soldOut={pizza.soldOut}
-        ></Pizza>
-      ))}
+      <ul>
+        {pizzaData.map((pizza, index) => (
+          <Pizza key={index} {...pizza} />
+        ))}
+      </ul>
     </main>
   );
 }
 
 function Pizza({ name, ingredients, price, photoName, soldOut }) {
   return (
-    <div className="pizza">
-      <img src={photoName} alt="{name}" />
+    <li className="pizza">
+      <img src={photoName} alt="{`Photo of ${name}`}" />
       <h3>{name}</h3>
       <p>{ingredients}</p>
       <span className="pizza__price" aria-live="polite">
         {soldOut ? "Sold Out" : `$${price.toFixed(2)}`}
       </span>
-    </div>
+    </li>
   );
 }
 
