@@ -4,6 +4,7 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css"; // Import an external CSS file
 
 // -----------------------------------------------------------------------------
 // Functional Components
@@ -11,7 +12,7 @@ import ReactDOM from "react-dom/client";
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -21,7 +22,7 @@ function App() {
 
 function Pizza() {
   return (
-    <div>
+    <div className="pizza">
       <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
       <h3>🍕 Pizza Spinaci</h3>
       <p>Tomato, mozarella, spinach, and ricotta cheese</p>
@@ -30,13 +31,19 @@ function Pizza() {
 }
 
 function Header() {
-  return <h1>Fast React Pizza Co.</h1>;
+  return (
+    <header className="header">
+      <h1>Fast React Pizza Co.</h1>;
+    </header>
+  );
 }
 
 function Menu() {
   return (
-    <main>
+    <main className="menu">
       <h2>Our Menu</h2>
+      <Pizza />
+      <Pizza />
       <Pizza />
       <Pizza />
       <Pizza />
@@ -46,11 +53,14 @@ function Menu() {
 }
 
 function Footer() {
-  const hour = new Date().getHours();
-  const isOpen = hour >= 9 && hour < 21;
+  const hour = new Date().getHours(); // get the current hour
+  const isOpen = hour >= 8 && hour < 22; // check if the restaurant is open
+  console.log("isOpen", isOpen);
 
   return (
-    <footer>{new Date().toLocaleDateString()} Fast React Pizza Co.</footer>
+    <footer className="footer">
+      {new Date().toLocaleDateString()}. We are currently open.
+    </footer>
   );
 }
 
