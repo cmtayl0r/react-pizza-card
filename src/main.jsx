@@ -67,7 +67,6 @@ function Pizza({ name, ingredients, price, photoName, soldOut }) {
 function Footer() {
   const hour = new Date().getHours(); // get the current hour
   const isOpen = hour >= 8 && hour < 22; // check if the restaurant is open
-  console.log("isOpen", isOpen);
 
   return (
     <footer className="footer">
