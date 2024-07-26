@@ -23,7 +23,7 @@ function App() {
 function Header() {
   return (
     <header className="header">
-      <h1>Fast React Pizza Co.</h1>
+      <h1>React Pizza Co.</h1>
     </header>
   );
 }
@@ -35,13 +35,23 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
+
       {/* Conditional rendering: if number of pizzas greater than 0 */}
       {numPizzas > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza, index) => (
-            <Pizza key={index} {...pizza} />
-          ))}
-        </ul>
+        <>
+          {/* React Fragment */}
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
+            reiciendis quas, vero exercitationem eius iure dolorem veniam animi
+            corporis nisi corrupti. Aut, pariatur nihil? Necessitatibus quidem
+            fuga quis quod recusandae.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza, index) => (
+              <Pizza key={index} {...pizza} />
+            ))}
+          </ul>
+        </>
       ) : (
         <p>No pizzas available</p>
       )}
@@ -57,7 +67,7 @@ function Pizza({ name, ingredients, price, photoName, soldOut }) {
         <h3>{name}</h3>
         <p>{ingredients}</p>
         <span className="pizza__price" aria-live="polite">
-          {soldOut ? "Sold Out" : `$${price.toFixed(2)}`}
+          {soldOut ? "Sold Out" : `€${price.toFixed(2)}`}
         </span>
       </div>
     </li>
@@ -66,20 +76,30 @@ function Pizza({ name, ingredients, price, photoName, soldOut }) {
 
 function Footer() {
   const hour = new Date().getHours(); // get the current hour
-  const isOpen = hour >= 8 && hour < 22; // check if the restaurant is open
+  const openHour = 8; // opening hour
+  const closeHour = 22; // closing hour
+  const isOpen = hour >= openHour && hour < closeHour; // check if the restaurant is open
 
   return (
     <footer className="footer">
       {/* Conditional rendering: if the restaurant is open, render the order button */}
       {isOpen ? (
-        <div className="order">
-          <p>We are open from 8am to 10pm.</p>
-          <button className="btn">Order now</button>
-        </div>
+        <Order openHour={openHour} closeHour={closeHour} />
       ) : (
         <p>We are closed. Come back tomorrow!</p>
       )}
     </footer>
+  );
+}
+
+function Order({ openHour, closeHour }) {
+  return (
+    <div className="order">
+      <p>
+        We are open from {openHour}:00 to {closeHour}:00.
+      </p>
+      <button className="btn">Order now</button>
+    </div>
   );
 }
 

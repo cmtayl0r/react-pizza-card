@@ -1,8 +1,11 @@
-# React Profile Card
+# React Pizza Card
 
 ### Description
 
-- Learning the basics of COmponents in React
+- Learning the basics of Components in React using JSX format
+- Rendering and Conditional rendering (using Vanilla JS)
+- Basic understanding of props and the parent / child component relationship
+- Using destructuring to send data-originated props from parent to children components
 
 ### Vite automatic starter files
 
