@@ -61,7 +61,7 @@ function Menu() {
 
 function Pizza({ name, ingredients, price, photoName, soldOut }) {
   return (
-    <li className="pizza">
+    <li className={`pizza ${soldOut ? "sold-out" : ""}`}>
       <img src={photoName} alt="{`Photo of ${name}`}" />
       <div>
         <h3>{name}</h3>
