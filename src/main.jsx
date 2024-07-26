@@ -23,20 +23,28 @@ function App() {
 function Header() {
   return (
     <header className="header">
-      <h1>Fast React Pizza Co.</h1>;
+      <h1>Fast React Pizza Co.</h1>
     </header>
   );
 }
 
 function Menu() {
+  const pizzas = pizzaData; // Array of pizzas
+  const numPizzas = pizzas.length; // Number of pizzas
+
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <ul className="pizzas">
-        {pizzaData.map((pizza, index) => (
-          <Pizza key={index} {...pizza} />
-        ))}
-      </ul>
+      {/* Conditional rendering: if number of pizzas greater than 0 */}
+      {numPizzas > 0 ? (
+        <ul className="pizzas">
+          {pizzas.map((pizza, index) => (
+            <Pizza key={index} {...pizza} />
+          ))}
+        </ul>
+      ) : (
+        <p>No pizzas available</p>
+      )}
     </main>
   );
 }
@@ -63,7 +71,15 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {new Date().toLocaleDateString()}. We are currently open.
+      {/* Conditional rendering: if the restaurant is open, render the order button */}
+      {isOpen ? (
+        <div className="order">
+          <p>We are open from 8am to 10pm.</p>
+          <button className="btn">Order now</button>
+        </div>
+      ) : (
+        <p>We are closed. Come back tomorrow!</p>
+      )}
     </footer>
   );
 }
